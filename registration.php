@@ -61,7 +61,7 @@
 					<h2 class="title-head">Student <span>Registration</span></h2>
 					<p>Login Your Account <a href="login.php">Click here</a></p>
 				</div>	
-				<form class="contact-bx" method="POST">
+				<form class="contact-bx" method="POST" action="">
 					<div class="row placeani">
 						<div class="col-lg-12">
 							<div class="form-group">
