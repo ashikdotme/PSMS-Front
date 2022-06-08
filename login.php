@@ -40,9 +40,18 @@ if(isset($_POST['st_login_btn'])){
 	} 
 }
 
-// if(isset($_SESSION['st_loggedin'])){
-// 	header('location:dashboard/index.php');
-// }
+if(isset($_SESSION['st_loggedin'])){
+	$is_email_verified = Student('is_email_verified',$_SESSION['st_loggedin'][0]['id']);
+	$is_mobile_verified = Student('is_mobile_verified',$_SESSION['st_loggedin'][0]['id']);
+	
+	if($is_email_verified == 1 AND $is_mobile_verified == 1){
+		header('location:dashboard/index.php');
+	}
+	else{
+		header('location:verify.php');
+	}
+	 
+}
 
 
 ?>
