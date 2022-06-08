@@ -22,7 +22,17 @@ if(isset($_POST['st_login_btn'])){
 		if($loginCount == 1){
 			$stData = $stCount->fetchAll(PDO::FETCH_ASSOC);
 			$_SESSION['st_loggedin'] = $stData;
-			header('location:dashboard/index.php');
+			// Get Verify Status
+			$is_email_verified = Student('is_email_verified',$_SESSION['st_loggedin'][0]['id']);
+			$is_mobile_verified = Student('is_mobile_verified',$_SESSION['st_loggedin'][0]['id']);
+			
+			if($is_email_verified == 1 AND $is_mobile_verified == 1){
+				header('location:dashboard/index.php');
+			}
+			else{
+				header('location:verify.php');
+			}
+			
 		}
 		else{
 			$error = "Username or Password is Wrong!";
@@ -30,9 +40,9 @@ if(isset($_POST['st_login_btn'])){
 	} 
 }
 
-if(isset($_SESSION['st_loggedin'])){
-	header('location:dashboard/index.php');
-}
+// if(isset($_SESSION['st_loggedin'])){
+// 	header('location:dashboard/index.php');
+// }
 
 
 ?>
