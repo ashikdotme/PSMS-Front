@@ -21,6 +21,7 @@
     $roll = $result[0]['roll']; 
     $current_class = $result[0]['current_class']; 
     $registration_date = $result[0]['registration_date']; 
+    $photo = $result[0]['photo']; 
 ?>
 <!--Main container start -->
 	<main class="ttr-wrapper">
@@ -97,6 +98,16 @@
                                 <tr>
                                     <td><b>Registration Date:</b></td>
                                     <td><?php echo $registration_date;?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Profile Photo:</b></td>
+                                    <td>
+                                    <?php if($photo != null) : ?>
+                                        <img style="height:100px;width:auto" src="<?php echo $photo;?>">
+                                    <?php else : ?>
+                                        <img alt="" src="assets/images/testimonials/pic3.jpg"  width="32" height="32">
+                                    <?php endif;?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><a href="edit-profile.php" class="btn btn-warning">Edit Profile</a></td>

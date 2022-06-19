@@ -8,6 +8,8 @@ if(!isset($_SESSION['st_loggedin']) OR $email_status != 1 OR $mobile_status != 1
     header('location:logout.php');
 }
 
+$photo = Student('photo',$_SESSION['st_loggedin'][0]['id']);
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,12 +181,17 @@ if(!isset($_SESSION['st_loggedin']) OR $email_status != 1 OR $mobile_status != 1
 						</div>
 					</li>
 					<li>
-						<a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
+						<a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar">
+						<?php if($photo != null) : ?>
+							<img style="object-fit:cover;height:100%;width:100%;" src="<?php echo $photo;?>">
+						<?php else : ?>
+							<img alt="" src="assets/images/testimonials/pic3.jpg"  width="32" height="32">
+						<?php endif;?>
+						</span></a>
 						<div class="ttr-header-submenu">
 							<ul>
-								<li><a href="user-profile.html">My profile</a></li>
-								<li><a href="list-view-calendar.html">Activity</a></li>
-								<li><a href="mailbox.html">Messages</a></li>
+								<li><a href="profile.php">Profile</a></li>
+								<li><a href="change-password.php">Change Password</a></li> 
 								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						</div>
